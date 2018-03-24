@@ -1,0 +1,82 @@
+.App {
+  text-align: center;
+  background: rgba(0,0,0,0.1);
+  height: 100vh;
+}
+
+.header,
+.bottom-header {
+  height: 60px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.header {
+  justify-content: flex-end;
+  background-color: tomato;
+}
+
+.header-logo {
+  max-width: 25vw;
+}
+
+.bottom-header {
+  justify-content: flex-start;
+  background-color: white;
+}
+
+.menu-link {
+  color: white;
+  background: none;
+  border: 0px none;
+  cursor: pointer;
+  font-size: 14px;
+  letter-spacing: 2px;
+  padding: 10px 0;
+  margin: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.menu-link:focus {
+  outline: none;
+}
+
+.menu-link:hover:after {
+  transform-origin: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  content: '';
+  height: 2px;
+  width: 100%;
+  background-color: white;
+  animation: slide-in 0.3s ease;
+}
+
+.globe-background {
+  background: url('./background.svg') no-repeat center left fixed;
+}
+
+.page {
+  background-size: cover;
+  height: calc(100vh - 120px);
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes slide-in {
+  0% { 
+    opacity: 0;
+    transform: scaleX(0); 
+  }
+  100% { 
+    opacity: 1;
+    transform: scaleX(80%); 
+  }
+}
