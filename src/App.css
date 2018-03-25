@@ -27,36 +27,6 @@
   background-color: white;
 }
 
-.menu-link {
-  color: white;
-  background: none;
-  border: 0px none;
-  cursor: pointer;
-  font-size: 14px;
-  letter-spacing: 2px;
-  padding: 10px 0;
-  margin: 10px;
-  overflow: hidden;
-  position: relative;
-}
-
-.menu-link:focus {
-  outline: none;
-}
-
-.menu-link:hover:after {
-  transform-origin: center;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  z-index: 100;
-  content: '';
-  height: 2px;
-  width: 100%;
-  background-color: white;
-  animation: slide-in 0.3s ease;
-}
-
 .globe-background {
   background: url('./background.svg') no-repeat center left fixed;
 }
@@ -68,15 +38,4 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-@keyframes slide-in {
-  0% { 
-    opacity: 0;
-    transform: scaleX(0); 
-  }
-  100% { 
-    opacity: 1;
-    transform: scaleX(80%); 
-  }
 }

@@ -1,0 +1,148 @@
+.menu-toggle {
+  display: none;
+}
+
+.menu-link {
+  color: white;
+  background: none;
+  border: 0px none;
+  cursor: pointer;
+  font-size: 14px;
+  letter-spacing: 2px;
+  padding: 10px 0;
+  margin: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.menu-link:focus {
+  outline: none;
+}
+
+.menu-link-selected:after,
+.menu-link:hover:after {
+  transform-origin: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  content: '';
+  height: 1px;
+  width: 100%;
+  background-color: rgba(255,255,255,0.5);
+  animation: grow-in 0.3s ease;
+}
+
+/* Mobile View */
+
+@media (max-width : 768px) {
+  .menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer;
+  }
+
+  .menu-toggle:focus {
+    outline: none;
+  }
+
+  .menu-toggle > .toggle-line {
+    width: 20px;
+    margin-top: 4px;
+    height: 2px;
+    background: white;
+    transition: transform 0.5s cubic-bezier(
+      0.680, 
+      -0.550, 
+      0.265, 
+      1.550
+    );
+  }
+
+  .menu-toggle-active {
+    margin-top: 0px;
+  }
+
+  .menu-toggle-active > .toggle-line:nth-child(1) {
+    transform: scaleX(1.2);
+  }
+
+  .menu-toggle-active > .toggle-line:nth-child(2) {
+    transform: scaleX(0.6);
+  }
+
+  .menu-toggle-active > .toggle-line:nth-child(3) {
+    transform: scaleX(01.2);
+  }
+
+  .menu {
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translateX(-200%);
+    height: 100vh;
+    width: calc(100vw - 70px);
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 100;
+    animation: slide-in 0.3s ease-out;
+    box-shadow: 0 0 40px 10px rgba(0,0,0,.3);
+  }
+
+  .menu-active {
+    transform: translateX(0%);
+    animation: slide-out 0.3s ease-out;
+
+  }
+
+  .menu-active > .menu-link {
+    animation: slide-out 1s ease;
+  }
+
+  .menu-link {
+    color: rgba(0,0,0,0.3);
+  }
+
+  .menu-link:hover:after,
+  .menu-link-selected:after {
+    background-color: tomato;
+  }
+}
+
+@keyframes slide-out {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes slide-in {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes grow-in{
+  0% { 
+    opacity: 0;
+    transform: scaleX(0); 
+  }
+  100% { 
+    opacity: 1;
+    transform: scaleX(80%); 
+  }
+}
+

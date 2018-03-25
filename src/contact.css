@@ -4,11 +4,11 @@
 }
 
 .contact-content {
-  width: 35vw;
   padding: 40px;
   background: white;
   border: 4px solid tomato;
   outline: 6px solid white;
+  width: 50vw;
 }
 
 .contact-content > hr {
@@ -18,4 +18,23 @@
   border-top: 1px solid rgba(0,0,0,0.1);
   margin: 1em 0;
   padding: 0; 
+}
+
+
+@media (max-width : 768px) {
+  .contact-content {
+    width: 80vw;
+  }
+
+  .contact-content h1 {
+    font-size: 6vw;
+  }
+
+  .conact-content h3 {
+    font-size: 5vw;
+  }
+
+  .contact-content p {
+    font-size: 3vw;
+  }
 }

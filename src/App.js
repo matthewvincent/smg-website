@@ -5,20 +5,25 @@ import Contact from './Contact';
 import Producers from './Producers';
 import Touring from './Touring';
 import MenuLink from './MenuLink';
+import Menu from './Menu';
 import logo1 from './logo1.svg';
+import cn from 'classnames';
 
 
 const routes = {
   HOME: "HOME",
-  CONTACT: "CONTACT",
-  PRODUCERS: "PRODUCERS",
   TOURING: "TOURING",
+  PRODUCERS: "PRODUCERS",
+  CONTACT: "CONTACT",
 };
 
 class App extends Component {
   constructor() {
     super();
-    this.state = { route: routes.HOME };
+    this.state = { 
+      route: routes.HOME,
+      mobileMenuOpen: false
+    };
   }
 
   getCurrentPage = () => {
@@ -61,6 +66,11 @@ class App extends Component {
       />
     );
 
+  toggleMobileMenu = () => 
+    this.setState((state) => ({
+      mobileMenuOpen: !state.mobileMenuOpen
+    }));
+
 
   render() {
 
@@ -74,17 +84,30 @@ class App extends Component {
     return (
       <div className="App">
         <header className="header">
-          {this.getMenuLinks()}
+          <button 
+            className={cn({
+              "menu-toggle": true,
+              "menu-toggle-active": this.state.mobileMenuOpen
+            })}
+            onClick={this.toggleMobileMenu}
+          >
+            <span className="toggle-line" />
+            <span className="toggle-line" />
+            <span className="toggle-line" />
+          </button>
+          <Menu menuActive={this.state.mobileMenuOpen}>
+            {this.getMenuLinks()}
+          </Menu>
         </header>
-        <header className="bottom-header">
-          {this.state.route !== HOME && 
+        {this.state.route !== HOME &&
+          <header className="bottom-header">
             <img 
-              class="header-logo"
+              className="header-logo"
               src={logo1} 
               style={{marginTop: '10px'}}
             />
-          }
-        </header>
+          </header>
+        }
         {this.getCurrentPage()}
       </div>
     );
