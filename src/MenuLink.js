@@ -1,20 +1,18 @@
 import React from 'react';
 import cn from 'classnames';
 import './Menu.css'
+import { Link } from 'react-router-dom';
 
 const MenuLink = ({
-  route, 
-  setRoute,
-  selected
+  route,
+  closeMobileMenu
 }) =>
-  <button 
-    onClick={() => setRoute(route)}
-    className={cn({
-      'menu-link': true,
-      'menu-link-selected': selected
-    })}
+  <Link 
+    to={`/${route}`}
+    className={"menu-link"}
+    onClick={closeMobileMenu}
   >
     {route}
-  </button>;
+  </Link>;
 
 export default MenuLink;

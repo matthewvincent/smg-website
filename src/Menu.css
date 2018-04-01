@@ -13,6 +13,8 @@
   margin: 10px;
   overflow: hidden;
   position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
 }
 
 .menu-link:focus {

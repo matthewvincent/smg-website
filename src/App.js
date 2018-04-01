@@ -10,79 +10,53 @@ import logo1 from './logo1.svg';
 import cn from 'classnames';
 
 
-const routes = {
-  HOME: "HOME",
-  TOURING: "TOURING",
-  PRODUCERS: "PRODUCERS",
-  CONTACT: "CONTACT",
-};
+const routes = [
+  "home",
+  "touring",
+  "producers",
+  "contact",
+];
 
 class App extends Component {
   constructor() {
     super();
     this.state = { 
-      route: routes.HOME,
       mobileMenuOpen: false
     };
   }
 
-  getCurrentPage = () => {
-    const { 
-      HOME, 
-      CONTACT, 
-      PRODUCERS, 
-      TOURING 
-    } = routes;
+  getMenuLinks = () =>  {
+    return routes.map(route => 
+      <MenuLink 
+        key={route}
+        route={route}
+        closeMobileMenu={this.closeMobileMenu}
+      />
+    );
+  };
 
-    switch (this.state.route) {
-      case HOME:
-        return <Home />;
 
-      case CONTACT:
-        return <Contact />;
-
-      case PRODUCERS:
-        return <Producers />;
-
-      case TOURING:
-        return <Touring />;
-
-      default:
-        return <Home />;
+  closeMobileMenu = () => {    
+    if (this.state.mobileMenuOpen) {
+      this.toggleMobileMenu();
     }
   };
 
-  setRoute = (route) => {
-    this.setState(() => ({ route }));
-  };
-
-  getMenuLinks = () => 
-    Object.keys(routes).map(route =>
-      <MenuLink 
-        key={route}
-        setRoute={this.setRoute} 
-        route={route}
-        selected={this.state.route === route}
-      />
-    );
-
-  toggleMobileMenu = () => 
+  toggleMobileMenu = () => {    
     this.setState((state) => ({
       mobileMenuOpen: !state.mobileMenuOpen
     }));
+  };
 
+  renderBottomHeader = () => {
+    const url = window.location.href;
+    const route = url.substr(url.lastIndexOf('/') + 1);
+    return (route !== "home" && routes.includes(route));
+  };
 
   render() {
-
-    const {
-      HOME,
-      CONTACT,
-      PRODUCERS,
-      TOURING,
-    } = routes;
-
     return (
-      <div className="App">
+      <div>
         <header className="header">
           <button 
             className={cn({
@@ -99,7 +73,7 @@ class App extends Component {
             {this.getMenuLinks()}
           </Menu>
         </header>
-        {this.state.route !== HOME &&
+        {this.renderBottomHeader() && 
           <header className="bottom-header">
             <img 
               className="header-logo"
@@ -108,7 +82,6 @@ class App extends Component {
             />
           </header>
         }
-        {this.getCurrentPage()}
       </div>
     );
   }
