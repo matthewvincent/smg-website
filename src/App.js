@@ -49,7 +49,18 @@ class App extends Component {
   renderBottomHeader = () => {
     const url = window.location.href;
     const route = url.substr(url.lastIndexOf('/') + 1).toLowerCase();
-    return (route !== "home" && routes.includes(route));
+
+    const isRoute = (route) => {
+      let isRoute = false;
+      routes.forEach(r => {
+        if (route.includes(r)) {
+          isRoute = true;
+        }
+      });
+      return isRoute;
+    }
+
+    return (!route.includes("home") && isRoute(route));
   };
 
   render() {

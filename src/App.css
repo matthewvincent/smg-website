@@ -35,7 +35,5 @@
   background-size: cover;
   height: calc(100vh - 120px);
   width: 100vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  overflow: auto;
 }

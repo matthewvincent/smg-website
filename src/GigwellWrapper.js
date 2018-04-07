@@ -1,6 +1,7 @@
 import React from 'react';
 import Spinner from './Spinner';
 import './gigwellWrapper.css';
+import Script from 'react-load-script';
 
 class GigwellWrapper extends React.Component {
   constructor(){
@@ -9,49 +10,38 @@ class GigwellWrapper extends React.Component {
   }
 
   componentDidMount() {
-    const { 
-      page, 
-      agency, 
-      tags 
-    } = this.props;
+      const fileref = document.createElement('script');
+      fileref.setAttribute("type","text/javascript");
+      fileref.setAttribute("src", "//connect.gigwell.com/roster/loader.js");
+      document.body.appendChild(fileref);
 
-    this.observer = new window.MutationObserver(this.toggleSpinner);
-    this.observer.observe(
-      document.getElementById('gigwell-iframe-container'), 
-      { childList: true }
-    );
-
-    (function(e,t,n) {
-      var r,a,c="script";
-      e.GigwellIFrame=e.GigwellIFrame||{},
-      r=t.createElement(c),
-      a=t.getElementsByTagName(c)[0],
-      r.async = 1,
-      r.src=n,
-      a.parentNode.insertBefore(r,a)
-    })(window,document,`https://connect.gigwell.com/${page}/legacy-gigwell-iframe.js`);
-
-    window.GigwellIFrame.callback='https://api.gigwell.com';
-    window.GigwellIFrame.tags=tags;
-    window.GigwellIFrame.agency=agency;
+      this.observer = new window.MutationObserver(this.toggleSpinner);
+      this.observer.observe(
+        document.getElementById('gigwell-iframe-container'), 
+        { childList: true }
+      );
   }
 
   toggleSpinner = () => {
-    setTimeout(() => {
-      this.setState(() => ({ showSpinner: false }));
-      this.observer.disconnect(); 
-    }, 1000);
-  };
+    this.setState(() => ({ showSpinner: false }));
+  }
 
   render() {  
-
+    const { createMarkup } = this;
     return [
-      <Spinner 
-        visible={this.state.showSpinner}
-      />,
-      <div className="page globe-background">
-        <div id="gigwell-iframe-container"></div>
-      </div>
+      <Spinner visible={this.state.showSpinner} />,
+      <gigwell-embedded-roster
+          id="gigwell-iframe-container"
+          agency="162101"
+          button-text-color="#fff"
+          highlight-color="#e2502c"
+          labels="{'backToRoster':'Back to Roster','bioHideReadMore':'Hide Full Bio','bioReadMore':'Read Full Bio','bookNow':'Book Now','downloads':'Downloads','genres':'Genres','labels':'Labels','loading':'Loading...','loadingEvents':'Loading Events...','location':'Location','noPastEvents':'No past gigs.','noUpcomingEvents':'No upcoming gigs.','pastEvents':'Past gigs','pressKit':'Press Kit','rsvp':'RSVP','techRider':'Tech Rider','tickets':'Tickets','upcomingEvents':'Upcoming gigs'}"
+          profile-box-shadow-color="#ccc"
+          profile-text-color="#333"
+          roster-text-color="#333"
+          roster-views="[{'borderRadius':3,'enabled':true,'imageHeight':100,'size':300,'style':'none','type':'list'}]"
+          tags={this.props.tags}
+      ></gigwell-embedded-roster>
     ];
   }
 }
