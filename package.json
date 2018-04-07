@@ -2,7 +2,7 @@
   "name": "smg",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://matthewvincent.github.io/smg-website",
+  "homepage": "www.sequelmusicgroup.com",
   "dependencies": {
     "classnames": "^2.2.5",
     "gh-pages": "^1.1.0",
