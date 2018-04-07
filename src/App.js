@@ -9,7 +9,6 @@ import Menu from './Menu';
 import logo1 from './logo1.svg';
 import cn from 'classnames';
 
-
 const routes = [
   "home",
   "touring",
@@ -35,7 +34,6 @@ class App extends Component {
     );
   };
 
-
   closeMobileMenu = () => {    
     if (this.state.mobileMenuOpen) {
       this.toggleMobileMenu();
@@ -50,7 +48,7 @@ class App extends Component {
 
   renderBottomHeader = () => {
     const url = window.location.href;
-    const route = url.substr(url.lastIndexOf('/') + 1);
+    const route = url.substr(url.lastIndexOf('/') + 1).toLowerCase();
     return (route !== "home" && routes.includes(route));
   };
 

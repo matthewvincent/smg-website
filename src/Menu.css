@@ -137,7 +137,7 @@
   }
 }
 
-@keyframes grow-in{
+@keyframes grow-in {
   0% { 
     opacity: 0;
     transform: scaleX(0); 
