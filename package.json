@@ -2,7 +2,7 @@
   "name": "smg",
   "version": "0.1.0",
   "private": true,
-  "homepage": "www.sequelmusicgroup.com",
+  "homepage": "",
   "dependencies": {
     "classnames": "^2.2.5",
     "gh-pages": "^1.1.0",
