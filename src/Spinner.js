@@ -5,7 +5,6 @@ import './spinner.css';
 export default class Spinner extends React.Component {
   render() {
     const { visible } = this.props;
-    console.log(visible)
     return (
       <div className={cn({
         'spinner-wrapper': true,
