@@ -1,7 +1,6 @@
 import React from 'react';
 import Spinner from './Spinner';
 import './gigwellWrapper.css';
-import Script from 'react-load-script';
 
 class GigwellWrapper extends React.Component {
   constructor(){
@@ -27,7 +26,6 @@ class GigwellWrapper extends React.Component {
   }
 
   render() {  
-    const { createMarkup } = this;
     return [
       <Spinner visible={this.state.showSpinner} />,
       <gigwell-embedded-roster

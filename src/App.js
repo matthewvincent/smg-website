@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import Home from './Home';
-import Contact from './Contact';
-import Producers from './Producers';
-import Touring from './Touring';
 import MenuLink from './MenuLink';
 import Menu from './Menu';
 import logo1 from './logo1.svg';
@@ -88,6 +84,7 @@ class App extends Component {
               className="header-logo"
               src={logo1} 
               style={{marginTop: '10px'}}
+              alt="Sequel Music Group"
             />
           </header>
         }
