@@ -40,6 +40,7 @@ class GigwellWrapper extends React.Component {
         profile-text-color="#333"
         roster-text-color="#333"
         roster-views="[{'borderRadius':3,'enabled':true,'imageHeight':100,'size':300,'style':'none','type':'list'}]"
+        tags={this.props.tags}
       ></gigwell-embedded-roster>
     ];
   }
