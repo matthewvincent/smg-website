@@ -15,14 +15,14 @@ const routes = [
 class App extends Component {
   constructor() {
     super();
-    this.state = { 
+    this.state = {
       mobileMenuOpen: false
     };
   }
 
   getMenuLinks = () =>  {
-    return routes.map(route => 
-      <MenuLink 
+    return routes.map(route =>
+      <MenuLink
         key={route}
         route={route}
         closeMobileMenu={this.closeMobileMenu}
@@ -30,13 +30,13 @@ class App extends Component {
     );
   };
 
-  closeMobileMenu = () => {    
+  closeMobileMenu = () => {
     if (this.state.mobileMenuOpen) {
       this.toggleMobileMenu();
     }
   };
 
-  toggleMobileMenu = () => {    
+  toggleMobileMenu = () => {
     this.setState((state) => ({
       mobileMenuOpen: !state.mobileMenuOpen
     }));
@@ -62,8 +62,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <header className="header">
-          <button 
+        <header className="header" style={{display: 'none'}}>
+          <button
             className={cn({
               "menu-toggle": true,
               "menu-toggle-active": this.state.mobileMenuOpen
@@ -78,11 +78,11 @@ class App extends Component {
             {this.getMenuLinks()}
           </Menu>
         </header>
-        {this.renderBottomHeader() && 
+        {this.renderBottomHeader() &&
           <header className="bottom-header">
-            <img 
+            <img
               className="header-logo"
-              src={logo1} 
+              src={logo1}
               style={{marginTop: '10px'}}
               alt="Sequel Music Group"
             />
