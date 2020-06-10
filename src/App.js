@@ -62,7 +62,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <header className="header" style={{display: 'none'}}>
+        <header className="header">
           <button
             className={cn({
               "menu-toggle": true,
