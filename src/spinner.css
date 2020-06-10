@@ -15,7 +15,7 @@
   position: absolute;
   height: calc(100vh - 120px);
   bottom: 0;
-  width: 100vw;
+  width: 100%;
   background: white;
   z-index: 1000;
   opacity: 1;
